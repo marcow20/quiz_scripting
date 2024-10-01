@@ -31,19 +31,19 @@ resumen = []
 for archivo in archivosTxt:
     rutaArchivo = os.path.join(directorio, archivo)
     try:
-        with open(rutaArchivo, 'r') as f:
-            contenido = f.readlines()  # Leer todas las líneas del archivo
-            numLineas = len(contenido)  # Contar el número de líneas
-            palabras = ' '.join(contenido).split()  # Obtener todas las palabras
-            numPalabras = len(palabras)  # Contar el número de palabras
-            numPython = sum(1 for palabra in palabras if palabra.lower() == "python")  # Contar "Python"
+        f = open(rutaArchivo, 'r')
+        contenido = f.readlines()  # Leer todas las líneas del archivo
+        numLineas = len(contenido)  # Contar el número de líneas
+        palabras = ' '.join(contenido).split()  # Obtener todas las palabras
+        numPalabras = len(palabras)  # Contar el número de palabras
+        numPython = sum(1 for palabra in palabras if palabra.lower() == "python")  # Contar "Python"
 
-            # Agregar el resultado a la lista resumen
-            resumen.append({
-                'archivo': archivo,
-                'lineas': numLineas,
-                'palabras': numPalabras,
-                'python': numPython
+        # Agregar el resultado a la lista resumen
+        resumen.append({
+            'archivo': archivo,
+            'lineas': numLineas,
+            'palabras': numPalabras,
+            'python': numPython
             })
     except PermissionError:
         print(f"No tienes permiso para leer {archivo}.")
